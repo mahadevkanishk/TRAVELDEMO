@@ -1,2 +1,3 @@
-# TRAVELDEMO
-backup code
+# MonkHop
+A social platform made by travellers for travellers.
+
