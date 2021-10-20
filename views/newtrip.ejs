@@ -1,0 +1,27 @@
+<h1>add a new trip for your page</h1>
+
+
+
+<form action="/newtrip/<%= user_id %>" method="POST" enctype="multipart/form-data">
+    <!-- <input type="text" name="trname" placeholder="Your Trip's Name">
+    <input type="text" name="trdesc" placeholder="your trip's description"> -->
+    <div>
+        <label for="name">Image Title</label>
+        <input type="text" id="tname" placeholder="Name"
+               value="" name="tname" required>
+    </div>
+    <div>
+        <label for="desc">Image Description</label>
+        <textarea id="tdesc" name="tdesc" value="" rows="2"
+                  placeholder="Description" required>
+        </textarea>
+    </div>
+    <div>
+        <label for="image">Upload Image</label>
+        <input type="file" id="image" name="image" value="" multiple required>
+    </div>
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+</form>
+
