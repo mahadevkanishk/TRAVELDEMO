@@ -1,29 +1,4 @@
-<!-- <h1>please add more info about you</h1>
 
-
-
-<form action="/userinfo/<%= user_id %>" method="POST" enctype="multipart/form-data">
-    
-    <div>
-        <label for="name">write your profession</label>
-        <input type="text" id="proff" placeholder="Name"
-               value="" name="proff" required>
-    </div>
-    <div>
-        <label for="desc">what's yor purpose of travelling </label>
-        <textarea id="purpose" name="purpose" value="" rows="2"
-                  placeholder="purpose" required>
-        </textarea>
-    </div>
-    <div>
-        <label for="image">upload your profile image</label>
-        <input type="file" id="proimage"
-               name="proimage" value="" required>
-    </div>
-    <div>
-        <button type="submit">Submit</button>
-    </div>
-</form> -->
 
 <!doctype html>
 <html lang="en">
@@ -100,10 +75,7 @@
 							<div class="col-md-7">
 								<div class="contact-wrap w-100 p-md-5 p-4">
 									<h3 class="mb-4">Add Info About Yourself</h3>
-									<!-- <div id="form-message-warning" class="mb-4"></div>
-									<div id="form-message-success" class="mb-4">
-										Your message was sent, thank you!
-									</div> -->
+									
 									<form action="/userinfo/<%= user_id %>" method="POST" enctype="multipart/form-data" id="contactForm" name="contactForm" class="contactForm">
 										<div class="row">
 											<div class="col-md-12">
@@ -128,13 +100,7 @@
 														placeholder="profile image" required>
 												</div>
 											</div>
-											<!-- <div class="col-md-12">
-												<div class="form-group">
-													<label class="label" for="#">Message</label>
-													<textarea name="message" class="form-control" id="message" cols="30"
-														rows="4" placeholder="Message"></textarea>
-												</div>
-											</div> -->
+											
 											<div class="col-md-12">
 												<div class="form-group">
 													<input type="submit" value="submit" class="btn btn-primary">

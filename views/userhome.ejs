@@ -65,10 +65,10 @@
                 <li><a href="#section1">My Trips</a></li>
                 <!-- <li><a href="#section2">My Bucketlist</a></li> -->
                 <!-- <li><a href="#section3">My recommnedations </a></li> -->
-                <li><a href="#section4">Contact Me</a></li>
+                <!-- <li><a href="#section4">Contact Me</a></li> -->
               </ul>
             </nav>
-            <div class="social-network">
+            <!-- <div class="social-network">
               <ul class="soial-icons">
                 <li>
                   <a href="https://fb.com/"
@@ -78,7 +78,7 @@
                 <li>
                   <a href="https://www.instagram.com"><i class="fa fa-instagram"></i></a>
                 </li>
-                <!-- <li>
+                <li>
                   <a href="#"><i class="fa fa-linkedin"></i></a>
                 </li>
                 <li>
@@ -86,9 +86,9 @@
                 </li>
                 <li>
                   <a href="#"><i class="fa fa-rss"></i></a>
-                </li> -->
+                </li>
               </ul>
-            </div>
+            </div> -->
             <div class="copyright-text">
               <p>Copyright 2021 MonkHop</p>
             </div>
@@ -104,9 +104,15 @@
               <div style="float: right;" class="white-button">
                 <a href="/logout/<%= user._id %>">Log Out</a>
               </div>
+              <div style="float: right; margin-right: 5px;" class="white-button">
+                <a href="/user/<%= user._id %>/editp">Edit Your Profile</a>
+              </div>
               <% } else{%>
                 <div style="float: right;" class="white-button">
-                  <a href="/signup.ejs">create your own account</a>
+                  <a href="/signup.ejs">Create Your Own Account</a>
+                </div>
+                <div style="float: right; margin-right: 4px; " class="white-button">
+                  <a href="/moments.ejs">Go Back</a>
                 </div>
 
                 <% } %>
@@ -131,9 +137,67 @@
           
         </h2>
 
+        <% if (user.tripdata.length > 0 ) { %> 
+
+          <% for(var i = 0; i < user.tripdata.length; i++ ) { %> 
+          <div class="line-dec"></div>
+          <div class="left-image-post">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="left-image">
+
+
+                <img src="data:image/<%= user.tripdata[i].img[0].contentType%>;base64,
+                  <%=user.tripdata[i].img[0].data.toString('base64')%>" alt="" />
+                  
+                  
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="right-text">
+                  <h4><%= user.tripdata[i].tname  %></h4>
+                  <p style="text-overflow:ellipsis; overflow: hidden; white-space: nowrap; ">
+                    <%= user.tripdata[i].tdesc  %>
+                  </p>
+                  <div class="white-button">
+                    <a href="/showpage/<%= user._id %>/<%= user.tripdata[i].tname %>">Read More</a>
+                  </div>
+                  <% if(user.userstatus) { %>
+                  
+                  <form action="/delete/<%= user._id %>/<%= i %>/<%= user.tripdata[i].tname %>?_method=DELETE" method="POST" >
+                    <div class="white-button">
+                       <button>Delete This Trip</button>
+                    </div>
+                  </form>
+                  <% } %>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          
+          <% } %>
+
+      
+        
+      <% } else{ %> 
+        <% if (user.userstatus) { %> 
+          <div class="line-dec"></div>
+          <div><span><h4>Start a journey with us, Add a trip!!!</h4></span></div>
+        <% } else{ %> 
+          <div class="line-dec"></div>
+          <div><span><h4>This user has not added any trip!</h4></span></div>        
+          
+          
+        <% } %>
+
+      
+      
+      <% } %>
+
             
             
-            <% if (user.tripdata.length > 0 ) { %> 
+            <!-- <% if (user.tripdata.length > 0 ) { %> 
 
             <% user.tripdata.forEach(function(userdata){ %> 
             <div class="line-dec"></div>
@@ -152,15 +216,24 @@
                 <div class="col-md-6">
                   <div class="right-text">
                     <h4><%= userdata.tname  %></h4>
-                    <p>
+                    <p style="text-overflow:ellipsis; overflow: hidden; white-space: nowrap; ">
                       <%= userdata.tdesc  %>
                     </p>
-                    <!-- <div class="white-button">
-                      <a href="/showpage/<%= user._id %>">Read More</a>
-                    </div> -->
+                    <div class="white-button">
+                      <a href="/showpage/<%= user._id %>/<%= userdata.tname %>">Read More</a>
+                    </div>
+                    <% if(user.userstatus) { %>
+                    
+                    <form action="/delete/<%= user._id %>/<%= userdata.tname %>?_method=DELETE" method="POST" >
+                      <div class="white-button">
+                         <button>Delete This Trip</button>
+                      </div>
+                    </form>
+                    <% } %>
                   </div>
                 </div>
               </div>
+
             </div>
             
             <% }) %>
@@ -180,7 +253,9 @@
 
         
         
-        <% } %>
+        <% } %> -->
+
+        <!-- break break break break -->
         
     
 
@@ -442,7 +517,7 @@
         </div>
       </section> -->
 
-      <section class="section contact-me" data-section="section4">
+      <!-- <section class="section contact-me" data-section="section4">
         <div class="container">
           <div class="section-heading">
             <h2>Contact Me</h2>
@@ -518,7 +593,7 @@
           </div>
         </div>
       </section>
-    </div>
+    </div> -->
 
     <!-- Scripts -->
     <!-- Bootstrap core JavaScript -->

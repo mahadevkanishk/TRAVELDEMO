@@ -1,8 +1,8 @@
- <!doctype html>
+<!doctype html>
 <html lang="en">
 
 <head>
-	<title>Knowing your Trip</title>
+	<title>Edit Your <%= tripname %> Trip</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -15,21 +15,33 @@
 </head>
 
 <body>
+
+    <% var k = 0; %>
+
+  <% for(var j=0; j < user.tripdata.length; j++) { %>
+ 
+  <% if(user.tripdata[j].tname.trim() === tripname.trim()){ %> 
+      
+    <% k=j %>
+
+    <% } %>
+ 
+ 
+ <%  } %>
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5">
-					<h2 class="heading-section">Hi,  Add Your New Trip </h2>
+					<h2 class="heading-section">Hi <%= user.name %> ,edit your <%= tripname %> trip </h2>
 				</div>
 			</div>
 			<div class="row justify-content-center">
 				<div class="col-md-12">
 					<div class="wrapper">
 						<div class="row mb-5">
-							
 							<div class="col-md-12">
 								<div class="form-group">
-									<a href="/user/<%= user_id %>"> <input type="submit" value="Go Back" class="btn btn-primary"></a>
+									<a href="/user/<%= user._id %>"> <input type="submit" value="Go Back" class="btn btn-primary"></a>
 									<div class="submitting"></div>
 								</div>
 							</div>
@@ -38,32 +50,31 @@
 						<div style="box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;" class="row no-gutters">
 							<div class="col-md-7">
 								<div class="contact-wrap w-100 p-md-5 p-4">
-									<h3 class="mb-4">Add Info About Your new Trip</h3>
+									<h3 class="mb-4">Edit <%= tripname %></h3>
 									
-									<form action="/newtrip/<%= user_id %>" method="POST" enctype="multipart/form-data" id="contactForm" name="TripFORM" class="contactForm">
+									<form action="/user/<%= user._id %>/<%= user.tripdata[k].tname %>/<%=k %>/update?_method=PUT" method="POST" enctype="multipart/form-data" id="contactForm" name="TripFORM" class="contactForm">
 										<div class="row">
 											<div class="col-md-12">
 												<div class="form-group">
-													<label class="label" for="name">What Will Be Your Trip's Name</label>
+													<label class="label" for="name">Change Your Trip's Name</label>
 													<input type="text" class="form-control" name="tname" id="tname"
-														placeholder="Trip's name" required>
+														placeholder="" required value="<%= user.tripdata[k].tname %>">
 												</div>
 											</div>
 											<div class="col-md-12">
 												<div class="form-group">
-													<label class="label" for="">Write Your Trip's Description</label>
-													<textarea type="email" class="form-control" cols="50" rows="6" name="tdesc" id="tdesc"
-														placeholder="Your Trip's Description" required></textarea>
+													<label class="label" for="">Chnage Your Trip's Description</label>
+													<textarea type="text" class="form-control" cols="50" rows="6" name="tdesc" id="tdesc"
+														placeholder=""  required > <%= user.tripdata[k].tdesc %></textarea>
 												</div>
 											</div>
 											<div class="col-md-12">
 												<div class="form-group">
-													<label class="label" for="image">Upload Your Trip's Pictures</label>
+													<label class="label" for="image">Upload New Photo in Your Trip</label>
 													<input type="file" class="form-control" name="image" id="image"
 														placeholder="Trip's images" multiple required>
 												</div>
 											</div>
-											 
 
 											<div class="col-md-12">
 												<div class="form-group">
@@ -76,7 +87,7 @@
 								</div>
 							</div>
 							<div class="col-md-5 d-flex align-items-stretch">
-								<div class="info-wrap w-100 p-5 img" style="background-image: url(images/ttt.jfif);">
+								<div class="info-wrap w-100 p-5 img" style="background-image: url(images/justgo.jpg);">
 								</div>
 							</div>
 						</div>
