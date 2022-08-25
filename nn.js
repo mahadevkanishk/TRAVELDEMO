@@ -41,7 +41,7 @@ app.use("*/delete/:id/:k/:tname", express.static(__dirname + "/public"));
 
 app.set('view engine', 'ejs');
 // mongoose.connect('mongodb://localhost/user');
-mongoose.connect('mongodb://monkhop:monkhop@cluster0-shard-00-00.mshx6.mongodb.net:27017,cluster0-shard-00-01.mshx6.mongodb.net:27017,cluster0-shard-00-02.mshx6.mongodb.net:27017/user?ssl=true&replicaSet=atlas-3q84u9-shard-0&authSource=admin&retryWrites=true&w=majority')
+
 
 mongoose.pluralize(null);
 
